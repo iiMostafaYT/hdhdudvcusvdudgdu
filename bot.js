@@ -886,27 +886,6 @@ var prefix = "$" // البريفكس
   }
 });
 
- //كود يخرج البوت من اي سيرفر
- 
- client.on("message", async message => { //حقوق سوبريم
-    const args = message.content.slice(prefix.length).trim().split(/ +/g); //حقوق سوبريم
-    const command = args.shift().toLowerCase();  //حقوق سوبريم
-    if(message.author.bot) return;  //حقوق سوبريم
-    if(message.content.indexOf(prefix) !== 0) return; //حقوق سوبريم
- 
-    if (command == "leave") { //حقوق سوبريم
-       
- 
-        if(message.author.id != "279221610408312834") return message.reply("**Sorry, you don't have permission to use this!**");  //حقوق سوبريم
- 
-       
-        if(!args[0] || args[1]) return message.reply(`**${prefix}leave <guild_id>**`); //حقوق سوبريم
-        let definedGuild = client.guilds.get(args[0]) //حقوق سوبريم
-        if(!definedGuild) return message.reply(`** 404 : invalid guild id or this guild delted**`); //حقوق سوبريم
-        client.guilds.get(args[0]).leave() //حقوق سوبريم
-        .catch(error => { return message.reply(error.message) }) //حقوق سوبريم
-    }    
-})
  
  //كود معلومات الروم
  
