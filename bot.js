@@ -826,7 +826,7 @@ client.on("guildMemberAdd", (member) => {
             if (dat[Inv])
                 if (dat[Inv] < Invite.uses) {
                     console.log(3);
- channel.send(`**Welcome To zCodes** :gem:${member} n/ Invited By ${Invite.inviter}`)
+ channel.send(`**Welcome To zCodes** :gem: \n ${member} Invited By ${Invite.inviter} \n Have a Nice Time 🎶`)
  }
             dat[Inv] = Invite.uses;
         })
