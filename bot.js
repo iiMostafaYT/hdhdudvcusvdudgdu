@@ -404,7 +404,8 @@ if(message.channel.name !== '•-support-share') return message.reply('يجب ك
 
           collected.first().delete();
 
-          jscodes.send(`@everyone | @here
+          jscodes.send(`
+@everyone | @here
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 **zCodes© ⬇**
