@@ -170,8 +170,7 @@ client.on('message', async (message) => {
       '**مالفرق بين const و var **',
       '**كيف تستخدم await **',
       '**ما فاءده JSON', 
-      '*مالفرق بي*ن message.channel.send(``) و message.reply(``) **'
- 
+
       ]
     let chaLan = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
       .then(collected => {
