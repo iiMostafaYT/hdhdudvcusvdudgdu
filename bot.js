@@ -38,7 +38,7 @@ const prefix = '#'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-	client.user.setGame(`$html | $js`,'https://www.twitch.tv/v5bz');
+	client.user.setGame(`#js | #html`,'https://www.twitch.tv/v5bz');
 });
 
  
@@ -356,7 +356,7 @@ client.on('message', message => {
 client.on('message', message => {
     if (message.content.startsWith("."))
     
-    message.reply("**Welcome To zCodes**🎉");
+    message.channel.send("**Welcome To zCodes**🎉");
     
       
 
