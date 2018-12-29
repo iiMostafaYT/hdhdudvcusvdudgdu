@@ -226,11 +226,11 @@ client.on('message',async message => {
 
 let mention = message.mentions.members.first();
 
-let Room = client.channels.get('520185599248957451');
+let Room = client.channels.get('526138996569669643');
 
-if(message.content.startsWith(prefix + "رفض")) {
+if(message.content.startsWith(prefix + "refused")) {
 
-if(message.guild.id !== '526138996569669643') return;
+if(message.guild.id !== '525972321035354122') return;
 
  if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("**للأسف ليس لديك صلاحية**").then(msg => msg.delete(5000));
 
@@ -255,7 +255,7 @@ let mention = message.mentions.members.first();
 
 let Room = client.channels.get('526138996569669643');
 
-if(message.content.startsWith(prefix + "قبول")) {
+if(message.content.startsWith(prefix + "accept")) {
 
 if(message.guild.id !== '525972321035354122') return;
 
@@ -658,7 +658,8 @@ if(message.channel.name !== '•-support-share') return message.reply('يجب ك
  
           collected.first().delete();
  
-          jscodes.send(`@everyone | @here
+          jscodes.send(`
+@everyone | @here
  
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 **zCodes© ⬇**
