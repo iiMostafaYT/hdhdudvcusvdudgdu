@@ -477,10 +477,14 @@ if(message.content.startsWith(prefix + 'room')) { // الامر
 
 //كود اوتو رول
 
-client.on('guildMemberAdd', (member) => {
-    
-member.addRole(member.guild.roles.find('name', '.PowerShop'')
-};
+
+client.on ("guildMemberAdd", member => {
+  
+   var role = member.guild.roles.find ("name", ".PowerShop'");
+   member.addRole (role);
+  
+})
+
 
 
 //كود تم الدعوه بواسطه
