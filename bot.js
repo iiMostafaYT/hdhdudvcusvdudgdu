@@ -34,18 +34,18 @@ const client = new Discord.Client({disableEveryone: true});
 
 const request = require('request');
 
-const prefix = '#'
+const prefix = '$'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-	client.user.setGame(`#js | #html`,'https://www.twitch.tv/v5bz');
+	client.user.setGame(`# PowerShop`,'https://www.twitch.tv/v5bz');
 });
 
  
 //كود الولكم
 
 client.on('guildMemberAdd', member => {
-     const welcomer =  member.guild.channels.find('name', '•-chat');
+     const welcomer =  member.guild.channels.find('name', '•-powershop');
     if(!welcomer) return;
       if(welcomer) {
          moment.locale('ar-ly');
@@ -125,9 +125,9 @@ welcomer.sendFile(canvas.toBuffer())
  //كود الموف
 
 client.on('message', message => {
-	var prefix = "#";
+	var prefix = "$";
 if(!message.channel.guild) return;
-if(message.content.startsWith('#' + 'move')) {
+if(message.content.startsWith('$' + 'move')) {
  if (message.member.hasPermission("MOVE_MEMBERS")) {
  if (message.mentions.users.size === 0) {
  return message.channel.send("``لاستخدام الأمر اكتب هذه الأمر : " +prefix+ "move [USER]``")
@@ -165,25 +165,22 @@ message.react("❌")
 
  //كود التقديم
 client.on('message', async (message) => {
-  if(message.content.startsWith("#تقديم")) {
-    await message.channel.send("** ما لغتك؟**").then(e => {
+  if(message.content.startsWith("$تقديم")) {
+    await message.channel.send("**ما اسمك ؟**").then(e => {
     let filter = m => m.author.id === message.author.id
     let lan = '';
     let md = '';
     let br = '';
     let qest = '';
     let questions = [
-      '**مالفرق بين const و var **',
-      '**كيف تستخدم await **',
-      '**ما فاءده JSON', 
-
+      '**ماذا راح تبيع و ازبات انك ما راح تنصب**',
       ]
     let chaLan = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
       .then(collected => {
         lan = collected.first().content
         collected.first().delete()
         e.delete();
-        message.channel.send('** ما خبرتك؟**').then(m => {
+        message.channel.send('** كم عمرك ؟**').then(m => {
         let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
           .then(co => {
             md = co.first().content
@@ -205,8 +202,8 @@ client.on('message', async (message) => {
                 if(gg) {
                   gg.send({
                       embed : new Discord.RichEmbed()
-                      .setDescription(`** اللغة ❓ : \n ${lan}\nالخبرة 🔗 :\n ${md} \n ${question}❓ :\n ${br} \nتم التقديم بواسطة : <@${message.author.id}> **`)
-                      .setFooter(`zCodes™`)
+                      .setDescription(`** ما اسمك ❓ : \n ${lan}\كم عمرك 🔗 :\n ${md} \n ${question}❓ :\n ${br} \nتم التقديم بواسطة : <@${message.author.id}> **`)
+                      .setFooter(`PowerShop™`)
                       .setTimestamp()
                     });
                   } 
@@ -226,11 +223,11 @@ client.on('message',async message => {
 
 let mention = message.mentions.members.first();
 
-let Room = client.channels.get('526138996569669643');
+let Room = client.channels.get('529382974932910090');
 
 if(message.content.startsWith(prefix + "refused")) {
 
-if(message.guild.id !== '525972321035354122') return;
+if(message.guild.id !== '529370426422329375') return;
 
  if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("**للأسف ليس لديك صلاحية**").then(msg => msg.delete(5000));
 
@@ -253,11 +250,11 @@ client.on('message',async message => {
 
 let mention = message.mentions.members.first();
 
-let Room = client.channels.get('526138996569669643');
+let Room = client.channels.get('529382974932910090');
 
 if(message.content.startsWith(prefix + "accept")) {
 
-if(message.guild.id !== '525972321035354122') return;
+if(message.guild.id !== '529370426422329375') return;
 
  if (!message.member.hasPermission("MANAGE_ROLES")) return message.reply("**للأسف ليس لديك صلاحية**").then(msg => msg.delete(5000));
 
@@ -304,7 +301,7 @@ if(message.content.startsWith('$bc')) {
 if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
 if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
 let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
-let copy = "zCodes";
+let copy = "PowerShop";
 let request = `Requested By ${message.author.username}`;
 if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');message.channel.send(`**هل أنت متأكد من إرسالك البرودكاست؟ \nمحتوى البرودكاست:** \` ${args}\``).then(msg => {
 msg.react('✅')
@@ -322,9 +319,9 @@ var bc = new
 Discord.RichEmbed()
 .setColor('RANDOM')
 .setTitle('Brodcast')
-.addField('**The Server', message.guild.name)
+.addField('**The Server**', message.guild.name)
 .addField('**Thee Sender**', message.author.username)
-.addField('**The Message', args)
+.addField('**The Message**', args)
 .setThumbnail('client.user.avatarURL')
 .setFooter(copy, client.user.avatarURL);
 m.send({ embed: bc })
@@ -341,22 +338,13 @@ msg.delete();
 
 //كود منشن لو منشنت البوت يرد عليك 
 
-client.on('message', message => {
-    if (message.content.startsWith("hi"))
-    
-    message.reply("ايش تبي ؟...ترا انا اذكي منك واعرف ارد😑");
-    
-      
 
-
-
-});
 
 
 client.on('message', message => {
     if (message.content.startsWith("."))
     
-    message.channel.send("**Welcome To zCodes**🎉");
+    message.channel.send("**Welcome To PowerShop**🎉");
     
       
 
@@ -390,7 +378,7 @@ client.on('message',async message => {
 //كود معلومات السيرفر
  
  client.on('message', message => {
-var prefix = "#" // البريفكس
+var prefix = "$" // البريفكس
 if(message.content.startsWith(prefix +"server")){ // الامر
   if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.reply(`**هذه الخاصية للادارة فقط** :negative_squared_cross_mark: `)
 if(!message.channel.guild) return message.reply(' ');
@@ -418,7 +406,7 @@ message.channel.sendEmbed(embed)
  //كود كيك صوتي
        
 client.on("message", message => {	
-var prefix = "#" // البريفكس
+var prefix = "$" // البريفكس
   let men = message.mentions.users.first();
   if(message.content.startsWith(prefix + "vkick")) {
     try {
@@ -449,7 +437,7 @@ var prefix = "#" // البريفكس
  
    client.on('message', message => {
     if(!message.channel.guild) return;
-var prefix = "#"; // البريفكس
+var prefix = "$"; // البريفكس
 if(message.content.startsWith(prefix + 'room')) { // الامر
     let channel = message.channel
     var embed = new Discord.RichEmbed()
@@ -469,7 +457,7 @@ if(message.content.startsWith(prefix + 'room')) { // الامر
  
  client.on('message', message => {
                  if (!message.channel.guild) return;
-         if(message.content =='#fm')
+         if(message.content =='$fm')
          var kayan = new Discord.RichEmbed()
          .setThumbnail(message.author.avatarURL)
          .setFooter(message.author.username, message.author.avatarURL)
@@ -491,7 +479,7 @@ if(message.content.startsWith(prefix + 'room')) { // الامر
 
 client.on('guildMemberAdd', (member) => {
     
-member.addRole(member.guild.roles.find('name', '• Z » Member'));
+member.addRole(member.guild.roles.find('name', '.PowerShop''));
 });
 
 
@@ -504,7 +492,7 @@ function forEachObject(obj, func) {
 client.on("ready", () => {
     var guild;
     while (!guild)
-        guild = client.guilds.get("525972321035354122")
+        guild = client.guilds.get("529370426422329375")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
@@ -513,7 +501,7 @@ client.on("ready", () => {
     })
 })
 client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.find('name', "•-chat");
+    let channel = member.guild.channels.find('name', "•-powershop");
     if (!channel) {
         console.log("!channel fails");
         return;
@@ -524,14 +512,14 @@ client.on("guildMemberAdd", (member) => {
     console.log('made it till here!');
     var guild;
     while (!guild)
-        guild = client.guilds.get("525972321035354122")
+        guild = client.guilds.get("529370426422329375")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
             if (dat[Inv])
                 if (dat[Inv] < Invite.uses) {
                     console.log(3);
- channel.send(`**Welcome To zCodes** :gem: \n Have a Nice Time 🎶 \n ${member} Invited By ${Invite.inviter}`)
+ channel.send(`**Welcome To PowerShop** :gem: \n Have a Nice Time 🎶 \n ${member} Invited By ${Invite.inviter}`)
  }
             dat[Inv] = Invite.uses;
         })
@@ -540,321 +528,101 @@ client.on("guildMemberAdd", (member) => {
 
  
 
-client.on('message',async message => {
- 
-  if(message.content.startsWith(prefix + "js")) {
- 
-if(!message.channel.guild) return message.reply(' ');
- 
-if(message.channel.name !== '•-support-share') return message.reply('يجب كتابه الامر في روم باسم •-support-share')
- 
-  let rank = message.guild.member(message.author).roles.find('name', '• Z » Support');
- 
-  if (!rank) return message.channel.send('🛑 **| لإستخدام الأمر Z >> Support يجب ان تمتلك رتبة**');
- 
-  let jscodes = message.guild.channels.find(`name`, '•-discord-js');
- 
-  if(!jscodes) return message.channel.send("❌لم اجد الروم الخاص بنشر الاكواد");
- 
-    let filter = m => m.author.id === message.author.id;
- 
-    let thisMessage;
- 
-    let thisFalse;
- 
-    message.channel.send('📝 **| من فضلك اكتب الكود الأن... ✏ **').then(msg => {
- 
- 
- 
-    message.channel.awaitMessages(filter, {
- 
-      max: 1,
- 
-      time: 90000,
- 
-      errors: ['time']
- 
-    })
- 
-    .then(collected => {
- 
-      collected.first().delete();
- 
-      thisMessage = collected.first().content;
- 
-      let boi;
- 
-      msg.edit('📜 **| من فضلك اكتب وصف الكود الأن... ✏ **').then(msg => {
- 
- 
- 
-          message.channel.awaitMessages(filter, {
- 
-            max: 1,
- 
-            time: 90000,
- 
-            errors: ['time']
- 
-          })
- 
-          .then(collected => {
- 
-            collected.first().delete();
- 
-            boi = collected.first().content;
- 
-            let boi2;
- 
-            msg.edit('🤵 **| من فضلك اكتب من صنع هذا الكود الأن... ✏ **').then(msg => {
- 
- 
- 
-              message.channel.awaitMessages(filter, {
- 
-                max: 1,
- 
-                time: 90000,
- 
-                errors: ['time']
- 
-              })
- 
-              .then(collected => {
- 
-                collected.first().delete();
- 
-              boi2 = collected.first().content;
- 
-      msg.edit('🛡 **| [ هل انت متأكد من نشر الكود؟ | [ نعم ] او [ لا**');
- 
- message.channel.awaitMessages(response => response.content === 'نعم' || 'لا' && filter,{
- 
-        max: 1,
- 
-        time: 90000,
- 
-        errors: ['time']
- 
-      })
- 
-      .then(collected => {
- 
-        if(collected.first().content === 'لا') {
- 
-          msg.delete();
- 
-          message.delete();
- 
-          thisFalse = false;
- 
-        }
- 
-        if(collected.first().content === 'نعم') {
- 
-          if(thisFalse === false) return;
- 
-          msg.edit('🕊 **| Done ✅, تم بنجاح نشر كودك في روم الاكواد**');
- 
-          collected.first().delete();
- 
-          jscodes.send(`
-@everyone | @here
- 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-**zCodes© ⬇**
- 
-\`\`\`JS
- 
-${thisMessage}\`\`\`
- 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- 
-**وصف الكود**: ${boi}
- 
-**تم النشر بواسطة**: ${message.author}
- 
-**المصدر / الشخص الذي صنع الكود**: ${boi2}`);
- 
-        }
- 
-      }
- 
-  );
- 
-});
- 
-    });
- 
+
+client.on("message", (message) => {
+    if (!message.content.startsWith(prefix) || message.author.bot) return;
+  
+    if (message.content.toLowerCase().startsWith(prefix + `help`)) {
+      const embed = new Discord.RichEmbed()
+      .setTitle(`:mailbox_with_mail: Help`)
+      .setColor(0xCF40FA)
+      .setDescription(`مرحباٌ! I'm ${client.user.username}, هذا البوت خاص للتذاكر لمساعره فريق العمل و هذه هي الاوامر:`)
+      .addField(`Tickets`, `[${prefix}new]() > لفتح تذكره جديده و منشنه اعضاء دعم السرفر \n[${prefix}close]() > لغلق التذكره التي تم فتحها من قبل الدعم`)
+      .addField(`Other`, `[${prefix}help]() > لرؤيه قائمه الاوامر \n[${prefix}ping]() > لمعرفه البينق الخاص للبوت \n[${prefix}about]() > لمعرفه كل شي عن البوت`)
+      message.channel.send({ embed: embed });
+    }
+  
+    if (message.content.toLowerCase().startsWith(prefix + `ping`)) {
+      message.channel.send(`Hoold on!`).then(m => {
+      m.edit(`:ping_pong: Wew, made it over the ~waves~ ! **Pong!**\nMessage edit time is ` + (m.createdTimestamp - message.createdTimestamp) + `ms, Discord API heartbeat is ` + Math.round(client.ping) + `ms.`);
+      });
   }
- 
-    );
- 
-  });
- 
-}
- 
-);
- 
-    })}});
- 
- 
-client.on('message',async message => {
- 
-  if(message.content.startsWith(prefix + "html")) {
- 
-if(!message.channel.guild) return message.reply(' ');
- 
-if(message.channel.name !== '•-support-share') return message.reply('يجب كتابه الامر في روم باسم •-support-share')
- 
-  let rank = message.guild.member(message.author).roles.find('name', '• Z » Support');
- 
-  if (!rank) return message.channel.send('🛑 **| لإستخدام الأمر Z >> Support يجب ان تمتلك رتبة**');
- 
-  let jscodes = message.guild.channels.find(`name`, '•-discord-html');
- 
-  if(!jscodes) return message.channel.send("❌لم اجد الروم الخاص بنشر الاكواد");
- 
-    let filter = m => m.author.id === message.author.id;
- 
-    let thisMessage;
- 
-    let thisFalse;
- 
-    message.channel.send('📝 **| من فضلك اكتب الكود الأن... ✏ **').then(msg => {
- 
- 
- 
-    message.channel.awaitMessages(filter, {
- 
-      max: 1,
- 
-      time: 90000,
- 
-      errors: ['time']
- 
-    })
- 
-    .then(collected => {
- 
-      collected.first().delete();
- 
-      thisMessage = collected.first().content;
- 
-      let boi;
- 
-      msg.edit('📜 **| من فضلك اكتب وصف الكود الأن... ✏ **').then(msg => {
- 
- 
- 
-          message.channel.awaitMessages(filter, {
- 
-            max: 1,
- 
-            time: 90000,
- 
-            errors: ['time']
- 
-          })
- 
-          .then(collected => {
- 
-            collected.first().delete();
- 
-            boi = collected.first().content;
- 
-            let boi2;
- 
-            msg.edit('🤵 **| من فضلك اكتب من صنع هذا الكود الأن... ✏ **').then(msg => {
- 
- 
- 
-              message.channel.awaitMessages(filter, {
- 
-                max: 1,
- 
-                time: 90000,
- 
-                errors: ['time']
- 
-              })
- 
-              .then(collected => {
- 
-                collected.first().delete();
- 
-              boi2 = collected.first().content;
- 
-      msg.edit('🛡 **| [ هل انت متأكد من نشر الكود؟ | [ نعم ] او [ لا**');
- 
- message.channel.awaitMessages(response => response.content === 'نعم' || 'لا' && filter,{
- 
-        max: 1,
- 
-        time: 90000,
- 
-        errors: ['time']
- 
-      })
- 
-      .then(collected => {
- 
-        if(collected.first().content === 'لا') {
- 
-          msg.delete();
- 
-          message.delete();
- 
-          thisFalse = false;
- 
-        }
- 
-        if(collected.first().content === 'نعم') {
- 
-          if(thisFalse === false) return;
- 
-          msg.edit('🕊 **| Done ✅, تم بنجاح نشر كودك في روم الاكواد**');
- 
-          collected.first().delete();
- 
-          jscodes.send(`@everyone | @here
- 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-**zCodes© ⬇**
- 
-\`\`\`JS
- 
-${thisMessage}\`\`\`
- 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
- 
-**وصف الكود**: ${boi}
- 
-**تم النشر بواسطة**: ${message.author}
- 
-**المصدر / الشخص الذي صنع الكود**: ${boi2}`);
- 
-        }
- 
-      }
- 
-  );
- 
-});
- 
-    });
- 
+  
+  if (message.content.toLowerCase().startsWith(prefix + `new`)) {
+      const reason = message.content.split(" ").slice(1).join(" ");
+      if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`هذا السيرفر ليس لديه \`Support Team\` صنع رتبة, لذلك لن يتم فتح التذكرة.\nاذا كنت تمتلك administrator, إنشاء اسم بهذا الاسم بالضبط وإعطائه للمستخدمين الذين يمكنهم مشاهدة التذاكر.`);
+      if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`انت بالفعل لديك تذكره مفتوحه.`);
+      message.guild.createChannel(`ticket-${message.author.id}`, "text").then(c => {
+          let role = message.guild.roles.find("name", "Support Team");
+          let role2 = message.guild.roles.find("name", "@everyone");
+          c.overwritePermissions(role, {
+              SEND_MESSAGES: true,
+              READ_MESSAGES: true
+          });
+          c.overwritePermissions(role2, {
+              SEND_MESSAGES: false,
+              READ_MESSAGES: false
+          });
+          c.overwritePermissions(message.author, {
+              SEND_MESSAGES: true,
+              READ_MESSAGES: true
+          });
+          let mrx = new Discord.RichEmbed()
+          .setColor('RANDOM')
+          .setAuthor(message.author.tag,message.author.avatarURL)
+          .setDescription(`:white_check_mark: تم إنشاء تذكرتك, #${c.name}.`)
+          .setTimestamp()
+          message.channel.sendEmbed(mrx);
+          const embed = new Discord.RichEmbed()
+          .setColor(0xCF40FA)
+          .addField(`مرحباً ${message.author.username}!`, `من فضلك وضح لماذا قمت بفتح التذكره مع بعض التفاصيل. مسؤلي السرفر سوف يكونوا موجودين في اسرع وقت للمساعده.`)
+          .setTimestamp();
+          c.send({ embed: embed });
+      }).catch(console.error);
   }
- 
-    );
- 
+  if (message.content.toLowerCase().startsWith(prefix + `close`)) {
+      if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`لا يمكنك استخدام أمر الإغلاق خارج قناة التذاكر.`);
+  
+      message.channel.send(`هل أنت متاكد؟ بمجرد تأكيد, لا يمكنك عكس هذا العمل!!\nللتأكيد ، اكتب \`-confirm\`. سوف ينتهي المهلة خلال 10 ثوانٍ ويتم إلغاؤها.`)
+      .then((m) => {
+        message.channel.awaitMessages(response => response.content === '-confirm', {
+          max: 1,
+          time: 10000,
+          errors: ['time'],
+        })
+        .then((collected) => {
+            message.channel.delete();
+          })
+          .catch(() => {
+            m.edit('انتهى إغلاق التذاكر ، لم يتم إغلاق التذكرة.').then(m2 => {
+                m2.delete();
+            }, 3000);
+          });
+      });
+  }
+  
   });
+  
+  client.on('message', message => {
+      if (message.content.startsWith(prefix + 'about')) {
+      if (message.author.bot) return
+      if (!message.guild) return message.reply('**:x: This Command Only In Server**')
+      let embed = new Discord.RichEmbed()
+      .setColor('RANDOM')
+      .setTitle(':mailbox_with_mail: about')
+      .setDescription(`I am ${client.user.username}, and I will try my best to help everyone! If I am in a discord server, people can use me to create tickets in order`)
+      .setFooter(`${client.user.username}`)
+      message.author.sendEmbed(embed)
+      }
+  });
+  
+
+          
  
-}
+        
+              
  
-);
- 
-    })}});
+     
 
 //توكن البوت 
 client.login(process.env.BOT_TOKEN);
