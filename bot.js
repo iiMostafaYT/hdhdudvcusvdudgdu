@@ -479,8 +479,8 @@ if(message.content.startsWith(prefix + 'room')) { // الامر
 
 client.on('guildMemberAdd', (member) => {
     
-member.addRole(member.guild.roles.find('name', '.PowerShop''));
-});
+member.addRole(member.guild.roles.find('name', '.PowerShop'')
+};
 
 
 //كود تم الدعوه بواسطه
